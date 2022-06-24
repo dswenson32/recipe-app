@@ -1,0 +1,204 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Create a Recipe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/form-validation.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2>Create a Recipe</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <form class="needs-validation" novalidate="">
+            <div class="row">
+              <div class="col-md-8 mb-3">
+                <label for="title">Recipe Name</label>
+                <input type="text" class="form-control" id="title" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  Gotta give this puppy a name
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="servings">Serves</label>
+                <input type="text" class="form-control" id="servings" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  How many mouths ya feedin
+                </div>
+              </div>
+            </div>
+
+              <hr class="mb-4">
+              <h4 class="mb-3">Ingredients</h4>
+              <!-- Ingredient Row Start -->
+              <div class="row">
+                  <div class="col-md-2 mb-3">
+                    <label for="quantity">Quantity</label>
+                    <input type="text" class="form-control" id="quantity-1" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      How many of the thing
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="measure">Measure</label>
+                    <input type="text" class="form-control" id="measure-1" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      How do you measure it
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="ingredient">Ingredient</label>
+                    <input type="text" class="form-control" id="ingredient-1" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      What even is it
+                    </div>
+                  </div>
+              </div>
+              <!-- Ingredient Row Start -->
+              <!-- Ingredient Row Start -->
+              <div class="row">
+                  <div class="col-md-2 mb-3">
+                    <input type="text" class="form-control" id="quantity-2" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      How many of the thing
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <input type="text" class="form-control" id="measure-2" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      How do you measure it
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" id="ingredient-2" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      What even is it
+                    </div>
+                  </div>
+              </div>
+              <!-- Ingredient Row Start -->
+              <!-- Ingredient Row Start -->
+              <div class="row">
+                  <div class="col-md-2 mb-3">
+                    <input type="text" class="form-control" id="quantity-3" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      How many of the thing
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <input type="text" class="form-control" id="measure-3" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      How do you measure it
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" id="ingredient-3" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      What even is it
+                    </div>
+                  </div>
+              </div>
+              <!-- Ingredient Row Start -->
+              <div class="row">
+                  <div class="col-md-12">
+                      <button class="btn btn-outline-secondary btn-lg btn-block" type="button">Add another ingredient</button>
+                  </div>
+              </div>
+
+              <hr class="mb-4">
+              <h4 class="mb-3">Directions</h4>
+              <!-- Direction row start -->
+              <div class="row">
+                  <div class="col-md-1 mb-3">
+                    <h4>01.</h4>
+                  </div>
+                  <div class="col-md-11 mb-3">
+                    <input type="textarea" class="form-control" id="direction-1" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      What do I do now
+                    </div>
+                  </div>
+              </div>
+              <!-- Direction row end -->
+              <!-- Direction row start -->
+              <div class="row">
+                  <div class="col-md-1 mb-3">
+                    <h4>02.</h4>
+                  </div>
+                  <div class="col-md-11 mb-3">
+                    <input type="textarea" class="form-control" id="direction-2" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      What do I do now
+                    </div>
+                  </div>
+              </div>
+              <!-- Direction row end -->
+              <!-- Direction row start -->
+              <div class="row">
+                  <div class="col-md-1 mb-3">
+                    <h4>03.</h4>
+                  </div>
+                  <div class="col-md-11 mb-3">
+                    <input type="textarea" class="form-control" id="direction-3" placeholder="" value="" required="">
+                    <div class="invalid-feedback">
+                      What do I do now
+                    </div>
+                  </div>
+              </div>
+              <!-- Direction row end -->
+              <div class="row">
+                  <div class="col-md-12">
+                      <button class="btn btn-outline-secondary btn-lg btn-block" type="button">Add another step</button>
+                  </div>
+              </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+          </form>
+        </div>
+      </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="/static/js/bootstrap/popper.min.js"></script>
+    <script src="/static/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap/holder.min.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+
+
+</body></html>
