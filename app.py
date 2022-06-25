@@ -57,11 +57,16 @@ def build_recipe(args):
 def get_recipes(recipes=[]):
     with open('/Users/devinswenson/PycharmProjects/recipe_book/static/test_yaml.yml', 'r') as file:
         data = yaml.safe_load_all(file)
-        for doc in data:
-            recipe = doc
+        for recipe in data:
+            ingredients = []
+            for ingredient in recipe.get("Ingredients"):
+                entry = {"Quantity": ingredient[0], "Measure": ingredient[1], "Ingredient": ingredient[2]}
+                ingredients.append(entry)
             recipes.append({
                 "Title": recipe.get('Title'),
-                "Servings": recipe.get('Servings')
+                "Servings": recipe.get('Servings'),
+                "Ingredients": ingredients,
+                "Instructions" : recipe.get("Instructions")
             })
     return jsonify(recipes)
 
