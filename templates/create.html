@@ -23,18 +23,18 @@
 
       <div class="row">
         <div class="col-md-12 order-md-1">
-          <form class="needs-validation" novalidate="">
+          <form action="/submit-recipe" method="POST" class="needs-validation" novalidate="">
             <div class="row">
               <div class="col-md-8 mb-3">
                 <label for="title">Recipe Name</label>
-                <input type="text" class="form-control" id="title" placeholder="" value="" required="">
+                <input type="text" class="form-control" id="title" name="title" placeholder="" value="" required="">
                 <div class="invalid-feedback">
                   Gotta give this puppy a name
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label for="servings">Serves</label>
-                <input type="text" class="form-control" id="servings" placeholder="" value="" required="">
+                <input type="text" class="form-control" id="servings" name="servings" placeholder="" value="" required="">
                 <div class="invalid-feedback">
                   How many mouths ya feedin
                 </div>
@@ -47,21 +47,21 @@
               <div class="row">
                   <div class="col-md-2 mb-3">
                     <label for="quantity">Quantity</label>
-                    <input type="text" class="form-control" id="quantity-1" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="quantity-1" name="quantity-1" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       How many of the thing
                     </div>
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="measure">Measure</label>
-                    <input type="text" class="form-control" id="measure-1" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="measure-1" name="measure-1" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       How do you measure it
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="ingredient">Ingredient</label>
-                    <input type="text" class="form-control" id="ingredient-1" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="ingredient-1" name="ingredient-1" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       What even is it
                     </div>
@@ -71,19 +71,19 @@
               <!-- Ingredient Row Start -->
               <div class="row">
                   <div class="col-md-2 mb-3">
-                    <input type="text" class="form-control" id="quantity-2" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="quantity-2" name="quantity-2" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       How many of the thing
                     </div>
                   </div>
                   <div class="col-md-4 mb-3">
-                    <input type="text" class="form-control" id="measure-2" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="measure-2" name="measure-2" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       How do you measure it
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" id="ingredient-2" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="ingredient-2" name="ingredient-2" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       What even is it
                     </div>
@@ -93,19 +93,19 @@
               <!-- Ingredient Row Start -->
               <div class="row">
                   <div class="col-md-2 mb-3">
-                    <input type="text" class="form-control" id="quantity-3" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="quantity-3" name="quantity-3" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       How many of the thing
                     </div>
                   </div>
                   <div class="col-md-4 mb-3">
-                    <input type="text" class="form-control" id="measure-3" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="measure-3" name="measure-3" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       How do you measure it
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" id="ingredient-3" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="ingredient-3" name="ingredient-3" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       What even is it
                     </div>
@@ -126,7 +126,7 @@
                     <h4>01.</h4>
                   </div>
                   <div class="col-md-11 mb-3">
-                    <input type="textarea" class="form-control" id="direction-1" placeholder="" value="" required="">
+                    <input type="textarea" class="form-control" id="direction-1" name="direction-1" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       What do I do now
                     </div>
@@ -139,7 +139,7 @@
                     <h4>02.</h4>
                   </div>
                   <div class="col-md-11 mb-3">
-                    <input type="textarea" class="form-control" id="direction-2" placeholder="" value="" required="">
+                    <input type="textarea" class="form-control" id="direction-2" name="direction-2" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       What do I do now
                     </div>
@@ -152,7 +152,7 @@
                     <h4>03.</h4>
                   </div>
                   <div class="col-md-11 mb-3">
-                    <input type="textarea" class="form-control" id="direction-3" placeholder="" value="" required="">
+                    <input type="textarea" class="form-control" id="direction-3" name="direction-3" placeholder="" value="" required="">
                     <div class="invalid-feedback">
                       What do I do now
                     </div>
@@ -165,7 +165,7 @@
                   </div>
               </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Recipe</button>
           </form>
         </div>
       </div>
