@@ -3,7 +3,7 @@ import yaml
 
 app = Flask(__name__)
 
-main_recipe_data = {}
+main_recipe_data = []
 
 @app.route('/oldtest')
 def hello_world(recipe=None):
@@ -13,7 +13,6 @@ def hello_world(recipe=None):
             if doc.get('Title') == 'Sausage and Bean Ragout':
                 recipe = doc
                 print(doc)
-
     json_data = {
         "Title": recipe.get('Title'),
         "Ingredients": recipe.get('Ingredients'),
@@ -48,10 +47,19 @@ def submit_recipe():
 
 # FUNCTIONS - START
 def build_recipe(args):
-    # Define Title and Servings
-    recipe = {"Title": args.get("title"), "Servings": args.get("servings")}
-    with open('/Users/devinswenson/PycharmProjects/recipe_book/static/test_yaml.yml', 'w') as file:
-        yaml.dump(recipe, file)
+    recipe = {"Title": str(args.get("title")), "Servings": str(args.get("servings")), "Ingredients": []}
+    idx = 1
+    while True:
+        if str(args.get("quantity-" + str(idx))) == "None":
+            break
+        recipe["Ingredients"].append([str(args.get("quantity-" + str(idx))), str(args.get("measure-" + str(idx))), str(args.get("ingredient-" + str(idx)))])
+        idx = idx+1
+    idx = 1
+    while True:
+        if str(args.get("direction-" + str(idx))) == "None":
+            break
+        recipe["Instructions"].append(str(args.get("direction-" + str(idx))))
+        idx = idx+1
     print(recipe)
 
 def get_recipes(recipes=[]):
@@ -66,9 +74,14 @@ def get_recipes(recipes=[]):
                 "Title": recipe.get('Title'),
                 "Servings": recipe.get('Servings'),
                 "Ingredients": ingredients,
-                "Instructions" : recipe.get("Instructions")
+                "Instructions": recipe.get("Instructions")
             })
-    return jsonify(recipes)
+            main_recipe_data = recipes
+    return jsonify(main_recipe_data)
 
 if __name__ == '__main__':
     app.run()
+
+
+ # with open('/Users/devinswenson/PycharmProjects/recipe_book/static/test_yaml.yml', 'w') as file:
+    #     yaml.dump(recipe, file)
