@@ -13,162 +13,164 @@
     <link href="/static/css/form-validation.css" rel="stylesheet">
   </head>
 
-  <body class="bg-light">
-
-    <div class="container">
-      <div class="py-5 text-center">
+<body>
+<div class="container">
+    <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h2>Create a Recipe</h2>
-      </div>
+    </div>
 
-      <div class="row">
+    <div class="row">
         <div class="col-md-12 order-md-1">
-          <form action="/submit-recipe" method="POST" class="needs-validation" novalidate="">
-            <div class="row">
-              <div class="col-md-8 mb-3">
-                <label for="title">Recipe Name</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="" value="" required="">
-                <div class="invalid-feedback">
-                  Gotta give this puppy a name
+            <form action="/submit-recipe" method="POST" class="needs-validation" novalidate="">
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label for="title">Recipe Name</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            Gotta give this puppy a name
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="servings">Serves</label>
+                        <input type="text" class="form-control" id="servings" name="servings" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            How many mouths ya feedin
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="servings">Serves</label>
-                <input type="text" class="form-control" id="servings" name="servings" placeholder="" value="" required="">
-                <div class="invalid-feedback">
-                  How many mouths ya feedin
+
+                <hr class="mb-4">
+                <h4 class="mb-3">Ingredients</h4>
+                <div id="ingredient-outlet">
+                <!-- Ingredient Row Start -->
+                <div class="row">
+                    <div class="col-md-2 mb-3">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" class="form-control" id="quantity-1" name="quantity-1" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            How many of the thing
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="measure">Measure</label>
+                        <input type="text" class="form-control" id="measure-1" name="measure-1" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            How do you measure it
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="ingredient">Ingredient</label>
+                        <input type="text" class="form-control" id="ingredient-1" name="ingredient-1" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            What even is it
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
+                <!-- Ingredient Row Start -->
+                <!-- Ingredient Row Start -->
+                <div class="row">
+                    <div class="col-md-2 mb-3">
+                        <input type="text" class="form-control" id="quantity-2" name="quantity-2" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            How many of the thing
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="text" class="form-control" id="measure-2" name="measure-2" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            How do you measure it
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" id="ingredient-2" name="ingredient-2" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            What even is it
+                        </div>
+                    </div>
+                </div>
+                <!-- Ingredient Row Start -->
+                <!-- Ingredient Row Start -->
+                <div class="row">
+                    <div class="col-md-2 mb-3">
+                        <input type="text" class="form-control" id="quantity-3" name="quantity-3" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            How many of the thing
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="text" class="form-control" id="measure-3" name="measure-3" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            How do you measure it
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" id="ingredient-3" name="ingredient-3" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            What even is it
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-outline-secondary btn-lg btn-block" type="button" onclick="addIngredient()">Add another ingredient</button>
+                    </div>
+                </div>
 
-              <hr class="mb-4">
-              <h4 class="mb-3">Ingredients</h4>
-              <!-- Ingredient Row Start -->
-              <div class="row">
-                  <div class="col-md-2 mb-3">
-                    <label for="quantity">Quantity</label>
-                    <input type="text" class="form-control" id="quantity-1" name="quantity-1" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      How many of the thing
+                <hr class="mb-4">
+                <h4 class="mb-3">Directions</h4>
+                <!-- Direction row start -->
+                <div class="row">
+                    <div class="col-md-1 mb-3">
+                        <h4>01.</h4>
                     </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="measure">Measure</label>
-                    <input type="text" class="form-control" id="measure-1" name="measure-1" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      How do you measure it
+                    <div class="col-md-11 mb-3">
+                        <input type="textarea" class="form-control" id="direction-1" name="direction-1" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            What do I do now
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="ingredient">Ingredient</label>
-                    <input type="text" class="form-control" id="ingredient-1" name="ingredient-1" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      What even is it
+                </div>
+                <!-- Direction row end -->
+                <!-- Direction row start -->
+                <div class="row">
+                    <div class="col-md-1 mb-3">
+                        <h4>02.</h4>
                     </div>
-                  </div>
-              </div>
-              <!-- Ingredient Row Start -->
-              <!-- Ingredient Row Start -->
-              <div class="row">
-                  <div class="col-md-2 mb-3">
-                    <input type="text" class="form-control" id="quantity-2" name="quantity-2" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      How many of the thing
+                    <div class="col-md-11 mb-3">
+                        <input type="textarea" class="form-control" id="direction-2" name="direction-2" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            What do I do now
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <input type="text" class="form-control" id="measure-2" name="measure-2" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      How do you measure it
+                </div>
+                <!-- Direction row end -->
+                <!-- Direction row start -->
+                <div class="row">
+                    <div class="col-md-1 mb-3">
+                        <h4>03.</h4>
                     </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" id="ingredient-2" name="ingredient-2" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      What even is it
+                    <div class="col-md-11 mb-3">
+                        <input type="textarea" class="form-control" id="direction-3" name="direction-3" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            What do I do now
+                        </div>
                     </div>
-                  </div>
-              </div>
-              <!-- Ingredient Row Start -->
-              <!-- Ingredient Row Start -->
-              <div class="row">
-                  <div class="col-md-2 mb-3">
-                    <input type="text" class="form-control" id="quantity-3" name="quantity-3" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      How many of the thing
+                </div>
+                <!-- Direction row end -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="add-step" class="btn btn-outline-secondary btn-lg btn-block" type="button">Add another step</button>
                     </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <input type="text" class="form-control" id="measure-3" name="measure-3" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      How do you measure it
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" id="ingredient-3" name="ingredient-3" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      What even is it
-                    </div>
-                  </div>
-              </div>
-              <!-- Ingredient Row Start -->
-              <div class="row">
-                  <div class="col-md-12">
-                      <button class="btn btn-outline-secondary btn-lg btn-block" type="button">Add another ingredient</button>
-                  </div>
-              </div>
-
-              <hr class="mb-4">
-              <h4 class="mb-3">Directions</h4>
-              <!-- Direction row start -->
-              <div class="row">
-                  <div class="col-md-1 mb-3">
-                    <h4>01.</h4>
-                  </div>
-                  <div class="col-md-11 mb-3">
-                    <input type="textarea" class="form-control" id="direction-1" name="direction-1" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      What do I do now
-                    </div>
-                  </div>
-              </div>
-              <!-- Direction row end -->
-              <!-- Direction row start -->
-              <div class="row">
-                  <div class="col-md-1 mb-3">
-                    <h4>02.</h4>
-                  </div>
-                  <div class="col-md-11 mb-3">
-                    <input type="textarea" class="form-control" id="direction-2" name="direction-2" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      What do I do now
-                    </div>
-                  </div>
-              </div>
-              <!-- Direction row end -->
-              <!-- Direction row start -->
-              <div class="row">
-                  <div class="col-md-1 mb-3">
-                    <h4>03.</h4>
-                  </div>
-                  <div class="col-md-11 mb-3">
-                    <input type="textarea" class="form-control" id="direction-3" name="direction-3" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                      What do I do now
-                    </div>
-                  </div>
-              </div>
-              <!-- Direction row end -->
-              <div class="row">
-                  <div class="col-md-12">
-                      <button class="btn btn-outline-secondary btn-lg btn-block" type="button">Add another step</button>
-                  </div>
-              </div>
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Recipe</button>
-          </form>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Recipe</button>
+            </form>
         </div>
-      </div>
+    </div>
+</div>
+</body>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -178,27 +180,60 @@
     <script src="/static/js/bootstrap/bootstrap.min.js"></script>
     <script src="/static/js/bootstrap/holder.min.js"></script>
     <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
 
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
 
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
             }, false);
-          });
-        }, false);
-      })();
+        })();
+    </script>
+    <script>
+        let ingredientCount = 4;
+
+        const ingredientRow =   '<div class="row">' +
+                    '<div class="col-md-2 mb-3">'+
+                        '<input type="text" class="form-control" id="quantity-x" name="quantity-x" placeholder="" value="" required="">'+
+                        '<div class="invalid-feedback">'+
+                         '   How many of the thing'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-md-4 mb-3">'+
+                        '<input type="text" class="form-control" id="measure-x" name="measure-x" placeholder="" value="" required="">'+
+                        '<div class="invalid-feedback">'+
+                         '   How do you measure it'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-md-6 mb-3">'+
+                        '<input type="text" class="form-control" id="ingredient-x" name="ingredient-x" placeholder="" value="" required="">'+
+                        '<div class="invalid-feedback">'+
+                         '   What even is it'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'
+        let directionRow = '<div class="row"><div class="col-md-1 mb-3"><h4>03.</h4></div><div class="col-md-11 mb-3"><input type="textarea" class="form-control" id="direction-3" name="direction-3" placeholder="" value="" required=""><div class="invalid-feedback">What do I do now</div></div></div>';
+
+        let addIngredient = function() {
+            let newIngredientRow = ingredientRow;
+            newIngredientRow = newIngredientRow.replaceAll("quantity-x", "quantity-" + ingredientCount);
+            newIngredientRow = newIngredientRow.replaceAll("measure-x", "measure-" + ingredientCount);
+            newIngredientRow = newIngredientRow.replaceAll("ingredient-x", "ingredient-" + ingredientCount);
+            $("#ingredient-outlet").append(newIngredientRow);
+            ingredientCount++;
+        }
     </script>
 
-
-</body></html>
+</html>
