@@ -40,14 +40,15 @@ def call_get_recipes():
 @app.route('/submit-recipe', methods=['POST'])
 def submit_recipe():
     print(request.form)
-    build_recipe(request.form)
+    built_recipe = build_recipe(request.form)
     print("Well we're here... we called the endpoint")
+    main_recipe_data.append(built_recipe)
     return ""
 # SERVICE ROUTES - END
 
 # FUNCTIONS - START
 def build_recipe(args):
-    recipe = {"Title": str(args.get("title")), "Servings": str(args.get("servings")), "Ingredients": []}
+    recipe = {"Title": str(args.get("title")), "Servings": str(args.get("servings")), "Ingredients": [], "Instructions": []}
     idx = 1
     while True:
         if str(args.get("quantity-" + str(idx))) == "None":
@@ -61,6 +62,7 @@ def build_recipe(args):
         recipe["Instructions"].append(str(args.get("direction-" + str(idx))))
         idx = idx+1
     print(recipe)
+    return recipe
 
 def get_recipes(recipes=[]):
     with open('/Users/devinswenson/PycharmProjects/recipe_book/static/test_yaml.yml', 'r') as file:
