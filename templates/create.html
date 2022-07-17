@@ -120,6 +120,7 @@
 
                 <hr class="mb-4">
                 <h4 class="mb-3">Directions</h4>
+                <div id="direction-outlet">
                 <!-- Direction row start -->
                 <div class="row">
                     <div class="col-md-1 mb-3">
@@ -158,10 +159,11 @@
                         </div>
                     </div>
                 </div>
+                    </div>
                 <!-- Direction row end -->
                 <div class="row">
                     <div class="col-md-12">
-                        <button id="add-step" class="btn btn-outline-secondary btn-lg btn-block" type="button">Add another step</button>
+                        <button id="add-step" class="btn btn-outline-secondary btn-lg btn-block" type="button" onclick="addDirection()">Add another step</button>
                     </div>
                 </div>
                 <hr class="mb-4">
@@ -202,7 +204,7 @@
         })();
     </script>
     <script>
-        let ingredientCount = 4;
+        let ingredientCount, directionCount = 4;
 
         const ingredientRow =   '<div class="row">' +
                     '<div class="col-md-2 mb-3">'+
@@ -224,7 +226,7 @@
                         '</div>'+
                     '</div>'+
                 '</div>'
-        let directionRow = '<div class="row"><div class="col-md-1 mb-3"><h4>03.</h4></div><div class="col-md-11 mb-3"><input type="textarea" class="form-control" id="direction-3" name="direction-3" placeholder="" value="" required=""><div class="invalid-feedback">What do I do now</div></div></div>';
+        let directionRow = '<div class="row"><div class="col-md-1 mb-3"><h4>YY.</h4></div><div class="col-md-11 mb-3"><input type="textarea" class="form-control" id="direction-x" name="direction-x" placeholder="" value="" required=""><div class="invalid-feedback">What do I do now</div></div></div>';
 
         let addIngredient = function() {
             let newIngredientRow = ingredientRow;
@@ -233,6 +235,18 @@
             newIngredientRow = newIngredientRow.replaceAll("ingredient-x", "ingredient-" + ingredientCount);
             $("#ingredient-outlet").append(newIngredientRow);
             ingredientCount++;
+        }
+
+        let addDirection = function (){
+            let newDirectionRow = directionRow;
+            if (directionCount <= 9){
+                newDirectionRow = newDirectionRow.replaceAll("YY", "0" + directionCount);
+            } else {
+                newDirectionRow = newDirectionRow.replaceAll("YY", directionCount.toString());
+            }
+            newDirectionRow = newDirectionRow.replaceAll("direction-x", "direction-" + directionCount);
+            $("#direction-outlet").append(newDirectionRow);
+            directionCount++;
         }
     </script>
 
