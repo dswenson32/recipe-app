@@ -42,7 +42,9 @@ def submit_recipe():
     print(request.form)
     built_recipe = build_recipe(request.form)
     print("Well we're here... we called the endpoint")
-    main_recipe_data.append(built_recipe)
+    recipes = get_recipes().json
+    recipes.append(built_recipe)
+    save_recipes(recipes)
     return ""
 # SERVICE ROUTES - END
 
@@ -78,8 +80,13 @@ def get_recipes(recipes=[]):
                 "Ingredients": ingredients,
                 "Instructions": recipe.get("Instructions")
             })
-            main_recipe_data = recipes
-    return jsonify(main_recipe_data)
+    return jsonify(recipes)
+
+def save_recipes(recipes):
+    with open('/Users/devinswenson/PycharmProjects/recipe_book/static/test_yaml.yml', 'w') as file:
+        yaml.safe_dump_all(recipes, file)
+    print("recipes saved!")
+
 
 if __name__ == '__main__':
     app.run()
