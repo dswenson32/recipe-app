@@ -9,12 +9,12 @@ def test_save():
     save_recipes(recipes)
     return "It's done"
 
-@app.route('/oldtest')
-def hello_world(recipe=None):
+@app.route('/recipe/<name>')
+def get_recipe(name):
     with open('/Users/devinswenson/PycharmProjects/recipe_book_new/static/test_yaml.yml', 'r') as file:
         data = yaml.safe_load_all(file)
         for doc in data:
-            if doc.get('Title') == 'Sausage and Bean Ragout':
+            if doc.get('Title') == name:
                 recipe = doc
                 print(doc)
     json_data = {
@@ -33,6 +33,21 @@ def create():
 @app.route('/')
 def home():
     return render_template('index.html')
+
+def get_recipe(name):
+    with open('/Users/devinswenson/PycharmProjects/recipe_book_new/static/test_yaml.yml', 'r') as file:
+        data = yaml.safe_load_all(file)
+        for doc in data:
+            if doc.get('Title') == name:
+                recipe = doc
+                print(doc)
+    json_data = {
+        "Title": recipe.get('Title'),
+        "Ingredients": recipe.get('Ingredients'),
+        "Instructions": recipe.get('Instructions'),
+        "Servings": recipe.get('Servings')
+    }
+    return render_template('recipe.html', json_data=json_data)
 # WEBPAGE ROUTES - END
 
 
@@ -94,7 +109,3 @@ def save_recipes(recipes):
 
 if __name__ == '__main__':
     app.run()
-
-
- # with open('/Users/devinswenson/PycharmProjects/recipe_book/static/test_yaml.yml', 'w') as file:
-    #     yaml.dump(recipe, file)
