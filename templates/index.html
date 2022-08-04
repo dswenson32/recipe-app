@@ -75,6 +75,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         { data: 'Servings' }
                     ]
                 });
+                $("td").on("click", function (e){
+                   e.preventDefault();
+                   if( $(this).parent().children().index($(this)) === 0){
+                       let name = e.target.innerHTML;
+                       let url = "/recipe/" + name;
+                       window.location.href = encodeURI(url);
+                   }
+                });
             });
         } );
     </script>
