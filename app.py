@@ -3,11 +3,15 @@ import yaml
 
 app = Flask(__name__)
 
-main_recipe_data = []
+@app.route('/test-save')
+def test_save():
+    recipes = get_recipes().json
+    save_recipes(recipes)
+    return "It's done"
 
 @app.route('/oldtest')
 def hello_world(recipe=None):
-    with open('/Users/devinswenson/PycharmProjects/recipe_book/static/test_yaml.yml', 'r') as file:
+    with open('/Users/devinswenson/PycharmProjects/recipe_book_new/static/test_yaml.yml', 'r') as file:
         data = yaml.safe_load_all(file)
         for doc in data:
             if doc.get('Title') == 'Sausage and Bean Ragout':
@@ -67,12 +71,12 @@ def build_recipe(args):
     return recipe
 
 def get_recipes(recipes=[]):
-    with open('/Users/devinswenson/PycharmProjects/recipe_book/static/test_yaml.yml', 'r') as file:
+    with open('/Users/devinswenson/PycharmProjects/recipe_book_new/static/test_yaml.yml', 'r') as file:
         data = yaml.safe_load_all(file)
         for recipe in data:
             ingredients = []
             for ingredient in recipe.get("Ingredients"):
-                entry = {"Quantity": ingredient[0], "Measure": ingredient[1], "Ingredient": ingredient[2]}
+                entry = [ingredient[0], ingredient[1], ingredient[2]]
                 ingredients.append(entry)
             recipes.append({
                 "Title": recipe.get('Title'),
@@ -83,7 +87,7 @@ def get_recipes(recipes=[]):
     return jsonify(recipes)
 
 def save_recipes(recipes):
-    with open('/Users/devinswenson/PycharmProjects/recipe_book/static/test_yaml.yml', 'w') as file:
+    with open('/Users/devinswenson/PycharmProjects/recipe_book_new/static/test_yaml.yml', 'w') as file:
         yaml.safe_dump_all(recipes, file)
     print("recipes saved!")
 
