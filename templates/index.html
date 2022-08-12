@@ -72,7 +72,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     data: data,
                     columns: [
                         { data: 'Title' },
-                        { data: 'Servings' }
+                        { data: 'Servings' },
+                        { defaultContent: '<input type="button" class="editBtn" value="Edit"/>'}
                     ]
                 });
                 $("td").on("click", function (e){
@@ -82,6 +83,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                        let url = "/recipe/" + name;
                        window.location.href = encodeURI(url);
                    }
+                });
+
+                $(".editBtn").on("click", function (e){
+                    console.log("Hey you clicked the button!")
+                    let name = e.target.parentElement.parentElement.firstChild.innerHTML;
+                    let url = "/edit/" + name;
+                    window.location.href = encodeURI(url);
                 });
             });
         } );
