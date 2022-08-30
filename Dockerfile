@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 COPY . /usr/src/app
 CMD ["flask", "run"]
 
-# docker run -p 5001:5001 -v ~/docker/docker_data/recipe_app_data:/recipes  chore_app
+# docker run -p 5001:5001 -v ~/docker/docker_data/recipe_app_data:/recipes  recipe-app
