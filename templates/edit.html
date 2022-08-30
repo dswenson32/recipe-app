@@ -1,0 +1,188 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Edit Recipe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/form-validation.css" rel="stylesheet">
+  </head>
+
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2>Edit Recipe</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+            <form action="/submit-recipe" method="POST" class="needs-validation" novalidate="">
+                <input type="hidden" name="_method" value="put" />
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label for="title">Recipe Name</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="" value="{{ json_data.Title }}" required="">
+                        <div class="invalid-feedback">
+                            Gotta give this puppy a name
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="servings">Serves</label>
+                        <input type="text" class="form-control" id="servings" name="servings" placeholder="" value="{{ json_data.Servings }}" required="">
+                        <div class="invalid-feedback">
+                            How many mouths ya feedin
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <h4 class="mb-3">Ingredients</h4>
+                <div id="ingredient-outlet">
+                <!-- Ingredient Row Start -->
+                {% for ingredientRow in json_data.Ingredients %}
+                    <div class="row">
+                        <div class="col-md-2 mb-3">
+                            {% if loop.index == 1 %}<label for="quantity">Quantity</label>{% endif %}
+                            <input type="text" class="form-control" id="quantity-{{ loop.index }}" name="quantity-{{ loop.index }}" placeholder="" value="{{ ingredientRow.0 }}" required="">
+                            <div class="invalid-feedback">
+                                How many of the thing
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            {% if loop.index == 1 %}<label for="measure">Measure / Preparation</label>{% endif %}
+                            <input type="text" class="form-control" id="measure-{{ loop.index }}" name="measure-{{ loop.index }}" placeholder="" value="{{ ingredientRow.1 }}" required="">
+                            <div class="invalid-feedback">
+                                How do you measure it/Prepare it
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {% if loop.index == 1 %}<label for="ingredient">Ingredient</label>{% endif %}
+                            <input type="text" class="form-control" id="ingredient-{{ loop.index }}" name="ingredient-{{ loop.index }}" placeholder="" value="{{ ingredientRow.2 }}" required="">
+                            <div class="invalid-feedback">
+                                What even is it
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-outline-secondary btn-lg btn-block" type="button" onclick="addIngredient()">Add another ingredient</button>
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <h4 class="mb-3">Directions</h4>
+                <div id="direction-outlet">
+                <!-- Direction row start -->
+                {% for instructionRow in json_data.Instructions %}
+                    <div class="row">
+                        <div class="col-md-1 mb-3">
+                            <h4>0{{ loop.index }}.</h4>
+                        </div>
+                        <div class="col-md-11 mb-3">
+                            <input type="textarea" class="form-control" id="direction-1" name="direction-{{ loop.index }}" placeholder="" value="{{ instructionRow }}" required="">
+                            <div class="invalid-feedback">
+                                What do I do now
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- Direction row end -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="add-step" class="btn btn-outline-secondary btn-lg btn-block" type="button" onclick="addDirection()">Add another step</button>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Recipe</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="/static/js/bootstrap/popper.min.js"></script>
+    <script src="/static/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap/holder.min.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    <script>
+        let ingredientCount = 4;
+        let directionCount = 4;
+
+        const ingredientRow =   '<div class="row">' +
+                    '<div class="col-md-2 mb-3">'+
+                        '<input type="text" class="form-control" id="quantity-x" name="quantity-x" placeholder="" value="" required="">'+
+                        '<div class="invalid-feedback">'+
+                         '   How many of the thing'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-md-4 mb-3">'+
+                        '<input type="text" class="form-control" id="measure-x" name="measure-x" placeholder="" value="" required="">'+
+                        '<div class="invalid-feedback">'+
+                         '   How do you measure it'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-md-6 mb-3">'+
+                        '<input type="text" class="form-control" id="ingredient-x" name="ingredient-x" placeholder="" value="" required="">'+
+                        '<div class="invalid-feedback">'+
+                         '   What even is it'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'
+        let directionRow = '<div class="row"><div class="col-md-1 mb-3"><h4>YY.</h4></div><div class="col-md-11 mb-3"><input type="textarea" class="form-control" id="direction-x" name="direction-x" placeholder="" value="" required=""><div class="invalid-feedback">What do I do now</div></div></div>';
+
+        let addIngredient = function() {
+            let newIngredientRow = ingredientRow;
+            newIngredientRow = newIngredientRow.replaceAll("quantity-x", "quantity-" + ingredientCount);
+            newIngredientRow = newIngredientRow.replaceAll("measure-x", "measure-" + ingredientCount);
+            newIngredientRow = newIngredientRow.replaceAll("ingredient-x", "ingredient-" + ingredientCount);
+            $("#ingredient-outlet").append(newIngredientRow);
+            ingredientCount++;
+        }
+
+        let addDirection = function (){
+            let newDirectionRow = directionRow;
+            if (directionCount <= 9){
+                newDirectionRow = newDirectionRow.replaceAll("YY", "0" + directionCount);
+            } else {
+                newDirectionRow = newDirectionRow.replaceAll("YY", directionCount.toString());
+            }
+            newDirectionRow = newDirectionRow.replaceAll("direction-x", "direction-" + directionCount);
+            $("#direction-outlet").append(newDirectionRow);
+            directionCount++;
+        }
+    </script>
+
+</html>

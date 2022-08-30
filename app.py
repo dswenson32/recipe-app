@@ -40,11 +40,12 @@ def call_get_recipes():
     return get_recipes()
 
 
-@app.route('/submit-recipe', methods=['POST', 'PUT'])
+@app.route('/submit-recipe', methods=['POST'])
 def submit_recipe():
+    method = request.form.get("_method")
     built_recipe = build_recipe(request.form)
     recipes = get_recipes().json
-    if request.method == 'PUT':
+    if method == 'put':
         for recipe in recipes:
             if recipe.get("Title") == built_recipe.get("Title"):
                 print("i found it!")
