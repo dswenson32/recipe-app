@@ -81,7 +81,7 @@ def build_recipe(args):
 
 def get_recipes():
     recipes = []
-    with open('/Users/devinswenson/PycharmProjects/recipe_book_new/static/test_yaml.yml', 'r') as file:
+    with open('/recipes/recipes.yaml', 'r') as file:
         data = yaml.safe_load_all(file)
         for recipe in data:
             ingredients = []
@@ -98,7 +98,7 @@ def get_recipes():
 
 
 def get_recipe(name):
-    with open('/Users/devinswenson/PycharmProjects/recipe_book_new/static/test_yaml.yml', 'r') as file:
+    with open('/recipes/recipes.yaml', 'r') as file:
         data = yaml.safe_load_all(file)
         for doc in data:
             if doc.get('Title') == name:
@@ -114,7 +114,7 @@ def get_recipe(name):
 
 
 def save_recipes(recipes):
-    with open('/Users/devinswenson/PycharmProjects/recipe_book_new/static/test_yaml.yml', 'w') as file:
+    with open('/recipes/recipes.yaml', 'w') as file:
         yaml.safe_dump_all(recipes, file)
     print("recipes saved!")
 
