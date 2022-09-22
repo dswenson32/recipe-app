@@ -67,7 +67,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <script>
         $(document).ready( function () {
-            $.get( "/getRecipes", function( data ) {
+            $.get( "/recipes/getRecipes", function( data ) {
                 $('#myTable').DataTable({
                     data: data,
                     columns: [
@@ -80,7 +80,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                    e.preventDefault();
                    if( $(this).parent().children().index($(this)) === 0){
                        let name = e.target.innerHTML;
-                       let url = "/recipe/" + name;
+                       let url = "/recipes/recipe/" + name;
                        window.location.href = encodeURI(url);
                    }
                 });
@@ -88,7 +88,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 $(".editBtn").on("click", function (e){
                     console.log("Hey you clicked the button!")
                     let name = e.target.parentElement.parentElement.firstChild.innerHTML;
-                    let url = "/edit/" + name;
+                    let url = "/recipes/edit/" + name;
                     window.location.href = encodeURI(url);
                 });
             });

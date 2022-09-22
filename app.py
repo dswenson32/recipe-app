@@ -12,22 +12,22 @@ def test_save():
 
 
 # WEB PAGE ROUTES - START
-@app.route('/')
+@app.route('/recipes')
 def home():
     return render_template('index.html')
 
 
-@app.route('/recipe/<name>')
+@app.route('/recipes/recipe/<name>')
 def get_recipe(name):
     return render_template('recipe.html', json_data=get_recipe(name))
 
 
-@app.route('/create')
+@app.route('/recipes/create')
 def create():
     return render_template('create.html')
 
 
-@app.route('/edit/<name>')
+@app.route('/recipes/edit/<name>')
 def edit(name):
     return render_template('edit.html', json_data=get_recipe(name))
 
@@ -35,12 +35,12 @@ def edit(name):
 # WEBPAGE ROUTES - END
 
 # SERVICE ROUTES - START
-@app.route('/getRecipes')
+@app.route('/recipes/getRecipes')
 def call_get_recipes():
     return get_recipes()
 
 
-@app.route('/submit-recipe', methods=['POST'])
+@app.route('/recipes/submit-recipe', methods=['POST'])
 def submit_recipe():
     method = request.form.get("_method")
     built_recipe = build_recipe(request.form)
