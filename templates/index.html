@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="http://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="/recipes/static/style.css">
+    <link rel="stylesheet" href="/static/style.css">
 
 </head>
 
@@ -53,21 +53,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
-    <script src="/recipes/static/js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/static/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
-    <script src="/recipes/static/js/bootstrap/popper.min.js"></script>
+    <script src="/static/js/bootstrap/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="/recipes/static/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap/bootstrap.min.js"></script>
     <!-- All Plugins js -->
-    <script src="/recipes/static/js/plugins/plugins.js"></script>
+    <script src="/static/js/plugins/plugins.js"></script>
     <!-- Active js -->
-    <script src="/recipes/static/js/active.js"></script>
+    <script src="/static/js/active.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
     <script>
         $(document).ready( function () {
-            $.get( "/recipes/getRecipes", function( data ) {
+            $.get( "/getRecipes", function( data ) {
                 $('#myTable').DataTable({
                     data: data,
                     columns: [
@@ -80,7 +80,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                    e.preventDefault();
                    if( $(this).parent().children().index($(this)) === 0){
                        let name = e.target.innerHTML;
-                       let url = "/recipes/recipe/" + name;
+                       let url = "/recipe/" + name;
                        window.location.href = encodeURI(url);
                    }
                 });
@@ -88,7 +88,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 $(".editBtn").on("click", function (e){
                     console.log("Hey you clicked the button!")
                     let name = e.target.parentElement.parentElement.firstChild.innerHTML;
-                    let url = "/recipes/edit/" + name;
+                    let url = "/edit/" + name;
                     window.location.href = encodeURI(url);
                 });
             });

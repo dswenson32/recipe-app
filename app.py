@@ -12,22 +12,22 @@ def test_save():
 
 
 # WEB PAGE ROUTES - START
-@app.route('/recipes')
+@app.route('/')
 def home():
     return render_template('index.html')
 
 
-@app.route('/recipes/recipe/<name>')
+@app.route('/recipe/<name>')
 def get_recipe(name):
     return render_template('recipe.html', json_data=get_recipe(name))
 
 
-@app.route('/recipes/create')
+@app.route('/create')
 def create():
     return render_template('create.html')
 
 
-@app.route('/recipes/edit/<name>')
+@app.route('/edit/<name>')
 def edit(name):
     return render_template('edit.html', json_data=get_recipe(name))
 
@@ -35,12 +35,12 @@ def edit(name):
 # WEBPAGE ROUTES - END
 
 # SERVICE ROUTES - START
-@app.route('/recipes/getRecipes')
+@app.route('/getRecipes')
 def call_get_recipes():
     return get_recipes()
 
 
-@app.route('/recipes/submit-recipe', methods=['POST'])
+@app.route('/submit-recipe', methods=['POST'])
 def submit_recipe():
     method = request.form.get("_method")
     built_recipe = build_recipe(request.form)
@@ -81,7 +81,7 @@ def build_recipe(args):
 
 def get_recipes():
     recipes = []
-    with open('/recipes/recipes.yaml', 'r') as file:
+    with open('./static/recipes.yaml', 'r') as file:
         data = yaml.safe_load_all(file)
         for recipe in data:
             ingredients = []
@@ -98,7 +98,7 @@ def get_recipes():
 
 
 def get_recipe(name):
-    with open('/recipes/recipes.yaml', 'r') as file:
+    with open('./static/recipes.yaml', 'r') as file:
         data = yaml.safe_load_all(file)
         for doc in data:
             if doc.get('Title') == name:
@@ -114,7 +114,7 @@ def get_recipe(name):
 
 
 def save_recipes(recipes):
-    with open('/recipes/recipes.yaml', 'w') as file:
+    with open('./static/recipes.yaml', 'w') as file:
         yaml.safe_dump_all(recipes, file)
     print("recipes saved!")
 
