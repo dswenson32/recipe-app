@@ -80,16 +80,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                    e.preventDefault();
                    if( $(this).parent().children().index($(this)) === 0){
                        let name = e.target.innerHTML;
-                       let url = "/recipe/" + name;
-                       window.location.href = encodeURI(url);
+                       let url = "{{ url_for('get_recipe', name='') }}";
+                       window.location.href = url + encodeURI(name);
                    }
                 });
 
                 $(".editBtn").on("click", function (e){
                     console.log("Hey you clicked the button!")
                     let name = e.target.parentElement.parentElement.firstChild.innerHTML;
-                    let url = "/edit/" + name;
-                    window.location.href = encodeURI(url);
+                    let url = "{{ url_for('edit', name='') }}"
+                    window.location.href = url + encodeURI(name);
                 });
             });
         } );

@@ -22,7 +22,7 @@
 
     <div class="row">
         <div class="col-md-12 order-md-1">
-            <form action="/submit-recipe" method="POST" class="needs-validation" novalidate="">
+            <form action="{{ url_for('submit_recipe') }}" method="POST" class="needs-validation" novalidate="">
                 <input type="hidden" name="_method" value="put" />
                 <div class="row">
                     <div class="col-md-8 mb-3">

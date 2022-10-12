@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, redirect
+from flask import Flask, render_template, jsonify, request, redirect, url_for
 import yaml
 
 app = Flask(__name__)
@@ -53,7 +53,7 @@ def submit_recipe():
                 break
     recipes.append(built_recipe)
     save_recipes(recipes)
-    return redirect('/')
+    return redirect(url_for("home"))
 
 
 # SERVICE ROUTES - END
