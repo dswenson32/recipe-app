@@ -22,29 +22,6 @@ Servings: 6
 Title: Sausage and Bean Ragout
 ---
 Ingredients:
-- - 2
-  - tbsp
-  - olive oil
-- - 1
-  - lb
-  - ground beef
-- - 1
-  - lb
-  - hot italian pork sauage
-- - 1
-  - lg
-  - onion
-- - 4
-  - cloves
-  - garlic
-Instructions:
-- Heat the oil in sauce pot
-- Stir the broth
-- Add the spinach
-Servings: 6
-Title: Another meal
----
-Ingredients:
 - - '1'
   - sdaflk
   - sadflk
@@ -60,3 +37,43 @@ Instructions:
 - lksadlkmsdf
 Servings: '4'
 Title: my new test
+---
+Ingredients:
+- - '2'
+  - tbsp
+  - olive oil
+- - '1'
+  - lb
+  - ground beef
+- - '1'
+  - lb
+  - hot italian pork sauage
+- - '1'
+  - lg
+  - onion
+- - '4'
+  - cloves
+  - garlic
+Instructions:
+- Heat the oil in sauce pot
+- Stir the broth
+- Add the spinach - EVEN MORE
+Servings: '6'
+Title: Another meal
+---
+Ingredients:
+- - '1'
+  - test
+  - test
+- - '1'
+  - test
+  - test
+- - '1'
+  - test
+  - test
+Instructions:
+- asdf
+- sadf
+- asdf
+Servings: '4'
+Title: new test
